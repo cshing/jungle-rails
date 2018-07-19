@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th colspan="2">Product</th>
+          <th>Unit Price</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <h1>Thank you for your order! </h1>
+        <p>Your order number is <%= @order.id %></p>
+        
+        <% LineItem.where(order_id: @order.id).each do |item| %>
+        <% product = Product.find_by(id: item.product_id) %>
+        <% quantity = item.quantity %>
+        <%= render './orders/order', product: product, quantity: quantity %>
+        <% end %>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="4">
+            TOTAL:
+          </th>
+          <th>
+            <%= @order.total %>
+          </th>
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+</html>
