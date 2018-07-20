@@ -21,6 +21,14 @@ end
 
 # Let's do this ...
 
+## USERS
+
+puts "Creating Users ..."
+
+user1 = User.create! first_name: 'Alice', last_name: 'Lee', email: 'alice@alice.com', password_digest: '1234'
+user2 = User.create! first_name: 'Bob', last_name: 'Bay', email: 'b@b.com', password_digest: '1111'
+user3 = User.create! first_name: 'Charlie', last_name: 'King', email: 'c@c.com', password_digest: '2222'
+
 ## CATEGORIES
 
 puts "Finding or Creating Categories ..."
@@ -131,6 +139,66 @@ cat3.products.create!({
   quantity: 0,
   price: 2_483.75
 })
+
+## Creating Review
+Review.create!([
+  {
+    product_id: 1,
+    user_id: 1,
+    description: 'great product!',
+    rating: 5
+  },
+  {
+    product_id: 1,
+    user_id: 2,
+    description: 'Nice product!',
+    rating: 4
+  },
+  {
+    product_id: 1,
+    user_id: 3,
+    description: 'great product!!!!',
+    rating: 5
+  },
+  {
+    product_id: 2,
+    user_id: 1,
+    description: 'great product!',
+    rating: 5
+  },
+  {
+    product_id: 2,
+    user_id: 2,
+    description: 'Niceeee!',
+    rating: 4
+  },
+  {
+    product_id: 2,
+    user_id: 3,
+    description: 'Awesome!!!!',
+    rating: 5
+  },
+  {
+    product_id: 3,
+    user_id: 1,
+    description: 'great product!',
+    rating: 3
+  },
+  {
+    product_id: 3,
+    user_id: 2,
+    description: 'Does not work',
+    rating: 2
+  },
+  {
+    product_id: 3,
+    user_id: 3,
+    description: 'great product!!!!',
+    rating: 2
+  }
+])
+
+
 
 
 puts "DONE!"
