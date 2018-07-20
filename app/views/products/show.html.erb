@@ -25,16 +25,18 @@
           <dd><%= @product.price %></dd>
           
           <h3>Reviews</h3>
-          <% @review.each do |review| %>
+          <% @reviews.each do |r| %>
+
             <dt>User</dt>
-             <% @user.each do |user| %>
-              <dd><%= user.first_name %></dd>
-             <% end %> 
+            <% @users = User.where(id: r.user_id) %>
+            <% @users.each do |u| %>
+            <dd><%= u.first_name %> <%= u.last_name %></dd>
+            <% end %>
 
             <dt>Rating</dt>
-            <dd><%= review.rating %></dd>
+            <dd><%= r.rating %></dd>
             <dt>Review</dt>
-            <dd><%= review.description %></dd>
+            <dd><%= r.description %></dd>
           <% end %>
         </dl>
       </div>
