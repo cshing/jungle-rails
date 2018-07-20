@@ -26,25 +26,31 @@
           
           <h3>Reviews</h3>
           
-          <%= form_for :review, url: product_reviews_path(@product.id) do |f| %>
-            <div class=“form-group”>
-              <dt><%= f.label "Rating" %></dt>
-              <dd><%= f.select :rating, [1, 2, 3, 4, 5] %></dd>
-            </div>
+          <% if current_user %>
+            <%= form_for :review, url: product_reviews_path(@product.id) do |f| %>
+              <div class=“form-group”>
+                <dt><%= f.label "Rating" %></dt>
+                <dd><%= f.select :rating, [1, 2, 3, 4, 5] %></dd>
+              </div>
 
-            <div class="form-group">
-              <dt><%= f.label "Description" %></dt>
-              <dd><%= f.text_area :description %></dd>
-              <dd><%= f.submit "Submit", class: "btn btn-default btn-primary" %></dd>
-            </div>
+              <div class="form-group">
+                <dt><%= f.label "Description" %></dt>
+                <dd><%= f.text_area :description %></dd>
+                <dd><%= f.submit "Submit", class: "btn btn-default btn-primary" %></dd>
+              </div>
+            <% end %>
           <% end %>
-          
           
           <% @reviews.reverse.each do |r| %>
             <dt>User</dt>
             <% @users = User.where(id: r.user_id) %>
             <% @users.each do |u| %>
-            <dd><%= u.first_name %> <%= u.last_name %></dd>
+            <dd>
+              <%= u.first_name %> <%= u.last_name %>
+              <% if u == current_user %>
+                <%= link_to 'Delete', "#{@product.id}/reviews/#{r.id}", method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+              <% end %>
+            </dd>
             <% end %>
 
             <dt>Rating</dt>
