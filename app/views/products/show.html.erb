@@ -39,6 +39,8 @@
                 <dd><%= f.submit "Submit", class: "btn btn-default btn-primary" %></dd>
               </div>
             <% end %>
+          <% else %>
+            <h5> Please login to write a review </h5>
           <% end %>
           
           <% @reviews.reverse.each do |r| %>
