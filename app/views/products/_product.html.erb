@@ -14,8 +14,12 @@
     <%= product.description %>
   </p>
   <footer class="actions">
-    <%= link_to add_item_cart_path(product_id: product.id), class: 'btn btn-primary', method: :put do %>
-      <%= fa_icon "shopping-cart", text: 'Add' %>
+    <% if product.quantity != 0 %>
+      <%= link_to add_item_cart_path(product_id: product.id), class: 'btn btn-primary', method: :put do %>
+        <%= fa_icon "shopping-cart", text: 'Add' %>
+      <% end %>
+    <% else %>
+      <button class="btn btn-primary"> <%= fa_icon "shopping-cart", text: 'Add' %> </button>
     <% end %>
     <%= link_to product, class: 'btn btn-default pull-right' do %>
       Details &raquo;
