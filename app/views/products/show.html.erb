@@ -14,6 +14,7 @@
 
       <div class="col-sm-8">
         <dl class="dl-horizontal">
+          <h3>Product Details</h3>
           <dt>Name</dt>
           <dd><%= @product.name %></dd>
           <dt>Description</dt>
@@ -22,6 +23,19 @@
           <dd><%= @product.quantity %></dd>
           <dt>Price</dt>
           <dd><%= @product.price %></dd>
+          
+          <h3>Reviews</h3>
+          <% @review.each do |review| %>
+            <dt>User</dt>
+             <% @user.each do |user| %>
+              <dd><%= user.first_name %></dd>
+             <% end %> 
+
+            <dt>Rating</dt>
+            <dd><%= review.rating %></dd>
+            <dt>Review</dt>
+            <dd><%= review.description %></dd>
+          <% end %>
         </dl>
       </div>
     </div>
