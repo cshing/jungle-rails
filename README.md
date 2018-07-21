@@ -3,7 +3,7 @@
 A mini e-commerce application built with Rails 4.2 for purposes of teaching Rails by example.
 
 
-## Setup
+## Getting Started
 
 1. Fork & Clone
 2. Run `bundle install` to install dependencies
@@ -14,6 +14,11 @@ A mini e-commerce application built with Rails 4.2 for purposes of teaching Rail
 7. Sign up for a Stripe account
 8. Put Stripe (test) keys into appropriate .env vars
 9. Run `bin/rails s -b 0.0.0.0` to start the server
+
+## Final Product
+
+![Screenshot of Jungle main page](https://github.com/cshing/jungle-rails/blob/master/docs/mainpage.png?raw=true)
+![Screenshot of product page](https://github.com/cshing/jungle-rails/blob/master/docs/product_page.png?raw=true)
 
 ## Stripe Testing
 
