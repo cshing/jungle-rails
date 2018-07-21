@@ -42,6 +42,10 @@
           <% else %>
             <h5> Please login to write a review </h5>
           <% end %>
+
+          <% if @product.review.average('rating') %>
+          <h5> The average rating of this product is: <%= @product.review.average('rating').round(2) %> </h5>
+          <% end %>
           
           <% @reviews.reverse.each do |r| %>
             <dt>User</dt>
